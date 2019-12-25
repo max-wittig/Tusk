@@ -190,10 +190,11 @@ function OauthManager(settings, oauth) {
 					console.info("Sending request for AUTH to", oauth.authUrl);
 					chromePromise.identity.launchWebAuthFlow({
 						'url': authUrl,
-						'interactive': is_interactive
+						'interactive': true
 					}).then(redirect_url => {
 						oauth.handleAuthRedirectURI(redirect_url, randomState, resolve, reject);
 					}).catch(function (err) {
+						console.error(err.name);
 						console.error("Error from webauthflow for", oauth.accessTokenType, err);
 						reject(err);
 					});

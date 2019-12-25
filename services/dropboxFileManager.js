@@ -94,6 +94,9 @@ function DropboxFileManager(settings) {
 		var stateMatches = /state=([^&]+)/.exec(redirect_url);
 		var uidMatches = /uid=(\d+)/.exec(redirect_url);
 
+		console.info(checkState);
+		console.info(randomState);
+		console.info(tokenMatches);
 		if (tokenMatches && stateMatches && uidMatches) {
 			var access_token = tokenMatches[1];
 			var checkState = decodeURIComponent(decodeURIComponent(stateMatches[1])); //I have no idea why it is double-encoded
